@@ -1,0 +1,53 @@
+
+.ars-world-map{height:calc(100vh - 82px);min-height:560px;box-sizing:border-box;padding:22px 28px;display:flex;flex-direction:column;gap:14px;color:#e2e7dc;overflow:auto}
+.ars-world-map-header{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.ars-world-map-header h1{margin:4px 0;font-size:27px;letter-spacing:-.03em}
+.ars-world-map-header .muted{margin:0;font-size:11px;color:#8f9c89}
+.ars-map-controls{display:flex;gap:7px;flex-wrap:wrap}
+.ars-map-editor-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 12px;border:1px solid #3b4b39;border-left:3px solid #a8b77b;background:#17231a}
+.ars-map-editor-title{display:flex;align-items:center;gap:8px;margin-right:auto;color:#b6c49a;font-size:9px;font-weight:800;letter-spacing:.15em}
+.ars-map-live-dot{width:7px;height:7px;border-radius:50%;background:#a8b77b;box-shadow:0 0 9px #a8b77b}
+.ars-map-editor-bar button{padding:8px 12px;border-radius:2px}
+.ars-map-editor-bar label,.ars-map-field{display:flex;align-items:center;gap:8px;color:#9ba993;font-size:10px}
+.ars-map-editor-bar select,.ars-map-field select{min-width:190px;padding:8px 10px;color:#dce4d6;border:1px solid #46563f;border-radius:2px;background:#111b14}
+.ars-map-editor-hint{color:#9ba68f;font-size:10px}
+.ars-map-workspace{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:13px;flex:1;min-height:0}
+.ars-map-board{position:relative;min-height:390px;overflow:hidden;border:1px solid #3b4a3a;border-radius:2px;background:#111d17;box-shadow:inset 0 0 50px rgba(0,0,0,.22)}
+.ars-map-board svg{background:radial-gradient(ellipse at center,#233327 0%,#152219 72%,#111a14 100%)}
+.ars-map-board.is-editing{border-color:#9dac70;box-shadow:inset 0 0 0 1px rgba(173,192,126,.2),0 0 0 2px rgba(173,192,126,.06)}
+.ars-map-country-label{font-family:inherit;font-weight:800;letter-spacing:.06em;fill:#f1f0df;paint-order:stroke;stroke:#111a14;stroke-width:3px;stroke-linejoin:round;filter:drop-shadow(0 1px 2px #000)}
+.ars-map-board-caption{position:absolute;left:11px;bottom:10px;padding:7px 9px;color:#9da991;border:1px solid #3b4938;background:rgba(14,22,16,.88);font-size:8px;font-weight:700;letter-spacing:.14em}
+.ars-map-inspector{min-width:0;overflow:auto;padding:17px;border:1px solid #374738;border-radius:2px;background:linear-gradient(145deg,#1a281e,#131c16)}
+.ars-map-inspector h2{margin:7px 0 14px;color:#e1e7d8;font-size:19px;line-height:1.25}
+.ars-map-inspector .muted{color:#899786;font-size:11px;line-height:1.6}
+.ars-map-data-row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #2d3b2f;color:#92a08d;font-size:10px}
+.ars-map-data-row b{max-width:58%;color:#d7dfd1;text-align:right}
+.ars-map-field{display:block;margin:15px 0 10px}
+.ars-map-field select{display:block;width:100%;margin-top:7px}
+.ars-map-small-note,.ars-map-instruction{margin-top:12px;color:#859380;font-size:10px;line-height:1.65}
+.ars-map-active-country{display:flex;align-items:center;gap:9px;margin:11px 0;padding:10px;border:1px solid #3b4b3a;background:#202e22;color:#e1e7d8;font-size:11px;font-weight:700}
+.ars-map-active-country i,.ars-map-legend i{display:inline-block;flex:0 0 auto;width:12px;height:12px;border:1px solid rgba(255,255,255,.35);border-radius:1px}
+.ars-map-legend{display:grid;gap:8px;margin-top:16px;padding-top:13px;border-top:1px solid #374738;color:#aebaa5;font-size:10px}
+.ars-map-legend b{margin-bottom:3px;color:#d6dfce;font-size:9px;letter-spacing:.13em;text-transform:uppercase}
+.ars-map-legend>div{display:flex;align-items:center;gap:8px;line-height:1.4}
+.ars-map-legend>div span{min-width:0}
+.ars-map-error{padding:9px 12px;border:1px solid #754b3c;background:#2b201a;color:#e0b69a;font-size:11px}
+@media(max-width:1000px){.ars-map-workspace{grid-template-columns:minmax(0,1fr) 250px}.ars-world-map{padding:16px}}
+@media(max-width:760px){.ars-map-workspace{grid-template-columns:1fr}.ars-map-board{min-height:320px}.ars-map-inspector{max-height:330px}.ars-world-map{height:auto;min-height:calc(100vh - 82px)}}
+
+/* На карте показываются только государственные границы; внутренние границы ячеек скрыты. */
+.ars-map-national-borders{
+  stroke:#0a120d;
+  stroke-width:3.2px;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+  paint-order:stroke;
+  filter:drop-shadow(0 0 1px rgba(0,0,0,.85));
+}
+
+
+/* Настройка цветов государств в режиме администратора */
+.ars-map-color-control > span{display:flex;align-items:center;gap:10px;margin-top:6px}
+.ars-map-color-control input[type="color"]{width:48px;height:34px;padding:3px;border:1px solid var(--line,rgba(255,255,255,.18));border-radius:7px;background:transparent;cursor:pointer}
+.ars-map-color-control code{font-size:12px;opacity:.8}
